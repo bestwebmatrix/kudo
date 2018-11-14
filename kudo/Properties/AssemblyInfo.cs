@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("kudo")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Kudo")]
+[assembly: AssemblyDescription("Kudo - A Command-Line Kudu Command Runner for Kudu")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("kudo")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCompany("Web Matrix Pty Ltd")]
+[assembly: AssemblyProduct("Kudo")]
+[assembly: AssemblyCopyright("Copyright © Web Matrix 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
