@@ -1,5 +1,5 @@
 ﻿//
-// Copyright 2018 Web Matrix Pty Ltd
+// Copyright 2018 WEB MATRIX Pty Ltd
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
 // to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
@@ -29,9 +29,9 @@ namespace kudo
     {
         static Int32 Main(string[] args)
         {
-            if (TryInit(args, out Rest rest, out KuduCommand cmd))
-            {
-                try
+            try
+            { 
+                if (TryInit(args, out Rest rest, out KuduCommand cmd))
                 {
                     KuduCommandResult result = rest.Post<KuduCommandResult>("api/command", cmd);
                     if (rest != null)
@@ -51,25 +51,30 @@ namespace kudo
 
                     return -1;
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.Error.Write(ex.Message);
-                    return -2;
+                    ShowHelp();
+
+                    return -1;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Kudo [-cfg <config filename>] [-site <site>] [-baseUri <kudu instance uri>] [-user <username>] [-pass <password>] [-cmd <command>] [-dir <dir>]");
-                Console.WriteLine(" -cfg:     The configuration file to load. Defaults to %HOME%/.kudo/config.json");
-                Console.WriteLine(" -site:    The name of the site to use from the config file.");
-                Console.WriteLine(" -baseUri: The uri of the Kudu endpoint to run the command against.");
-                Console.WriteLine(" -user:    The username to authenticate with.");
-                Console.WriteLine(" -pass:    The password to authenticate with.");
-                Console.WriteLine(" -cmd:     The command to run on the Kudu server.");
-                Console.WriteLine(" -dir:     The directory on the Kudu server to run the command in.");
-
-                return -1;
+                Console.Error.Write(ex.Message);
+                return -2;
             }
+        }
+
+        private static void ShowHelp()
+        {
+            Console.WriteLine("Kudo [-cfg <config filename>] [-site <site>] [-baseUri <kudu instance uri>] [-user <username>] [-pass <password>] [-cmd <command>] [-dir <dir>]");
+            Console.WriteLine(" -cfg:     The configuration file to load. Defaults to %HOME%/.kudo/config.json");
+            Console.WriteLine(" -site:    The name of the site to use from the config file.");
+            Console.WriteLine(" -baseUri: The uri of the Kudu endpoint to run the command against.");
+            Console.WriteLine(" -user:    The username to authenticate with.");
+            Console.WriteLine(" -pass:    The password to authenticate with.");
+            Console.WriteLine(" -cmd:     The command to run on the Kudu server.");
+            Console.WriteLine(" -dir:     The directory on the Kudu server to run the command in.");
         }
 
         private static String GetDefaultConfig()
@@ -201,7 +206,7 @@ namespace kudo
                 cfgFile = Environment.ExpandEnvironmentVariables(cfgFile);
             }
 
-            if(File.Exists(cfgFile))
+            if(Directory.Exists(Path.GetDirectoryName(cfgFile)) && File.Exists(cfgFile))
             {
                 ConfigFile config = JsonConvert.DeserializeObject<ConfigFile>(File.ReadAllText(cfgFile));
                 if(config != null)

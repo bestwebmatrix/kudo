@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Kudo")]
 [assembly: AssemblyDescription("Kudo - A Command-Line Kudu Command Runner for Kudu")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Web Matrix Pty Ltd")]
+[assembly: AssemblyCompany("WEB MATRIX Pty Ltd")]
 [assembly: AssemblyProduct("Kudo")]
-[assembly: AssemblyCopyright("Copyright © Web Matrix 2018")]
+[assembly: AssemblyCopyright("Copyright © WEB MATRIX 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
