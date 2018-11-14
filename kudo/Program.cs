@@ -60,6 +60,7 @@ namespace kudo
             {
                 Console.WriteLine("Kudo [-cfg <config filename>] [-baseUri <kudu instance uri>] [-user <username>] [-pass <password>] [-cmd <command>] [-dir <dir>]");
                 Console.WriteLine(" -cfg:     The configuration file to load. Defaults to %HOME%/.kudo/config.json");
+                Console.WriteLine(" -site:    The name of the site to use from the config file.");
                 Console.WriteLine(" -baseUri: The uri of the Kudu endpoint to run the command against.");
                 Console.WriteLine(" -user:    The username to authenticate with.");
                 Console.WriteLine(" -pass:    The password to authenticate with.");
