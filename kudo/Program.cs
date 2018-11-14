@@ -18,6 +18,7 @@ using Kudo.Kudu;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -71,6 +72,16 @@ namespace kudo
             }
         }
 
+        private static String GetDefaultConfig()
+        {
+            String cfg = (Environment.OSVersion.Platform == PlatformID.Unix ||
+                          Environment.OSVersion.Platform == PlatformID.MacOSX)
+                          ? Environment.GetEnvironmentVariable("HOME")
+                          : Environment.ExpandEnvironmentVariables("%HOMEDRIVE%%HOMEPATH%");
+
+            return Path.Combine(cfg, ".kudo", "config.json");
+        }
+
         private static Boolean TryInit(String[] args, out Rest rest, out KuduCommand cmd)
         {
             String baseUri = null;
@@ -79,7 +90,7 @@ namespace kudo
             String command = null;
             String dir = null;
             String site = null;
-            String cfgFile = "%HOME%/.kudo/config.json";
+            String cfgFile = GetDefaultConfig();
 
             site = FindArg(args, "site") ?? String.Empty;
             cfgFile = FindArg(args, "cfg") ?? cfgFile;
