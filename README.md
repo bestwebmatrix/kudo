@@ -15,12 +15,13 @@ Developed in Visual Studio 15.8 using C# 7.0 and the Microsoft .NET Framework 4.
 * Not providing a username/password in the configuration or on the command line will prompt for them.
 
 ## Command Line Arguments
-**-cfg**:     The configuration file to load. Defaults to %HOME%/.kudo/config.json
-**-baseUri**: The uri of the Kudu endpoint to run the command against.
-**-user**:    The username to authenticate with.
-**-pass**:    The password to authenticate with.
-**-cmd**:     The command to run on the Kudu server.
-**-dir**:     The directory on the Kudu server to run the command in.
+**-cfg**: The configuration file to load. Defaults to %HOME%/.kudo/config.json\
+**-site**: The name of the site to use from the config file.\
+**-baseUri**: The uri of the Kudu endpoint to run the command against.\
+**-user**: The username to authenticate with.\
+**-pass**: The password to authenticate with.\
+**-cmd**: The command to run on the Kudu server.\
+**-dir**: The directory on the Kudu server to run the command in.
 
 ## Configuration File
 Sample Json Config:
