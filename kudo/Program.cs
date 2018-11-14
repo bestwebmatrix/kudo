@@ -221,6 +221,12 @@ namespace kudo
             }
             else
             {
+                String cfgPath = Path.GetDirectoryName(cfgFile);
+                if(!Directory.Exists(cfgPath))
+                {
+                    Directory.CreateDirectory(cfgPath);
+                }
+
                 ConfigFile newConfig = new ConfigFile();
                 newConfig["Default"] = new SiteConfig();
                 File.WriteAllText(cfgFile, JsonConvert.SerializeObject(newConfig, Formatting.Indented));
